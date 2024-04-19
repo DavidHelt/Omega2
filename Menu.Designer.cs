@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace Omega
 {
-    partial class Form2
+    partial class Menu
     {
         /// <summary>
         /// Required designer variable.
@@ -40,12 +40,12 @@ namespace Omega
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.labelUser = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +53,7 @@ namespace Omega
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Red;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button4.Location = new System.Drawing.Point(41, 392);
             this.button4.Name = "button4";
@@ -150,6 +151,26 @@ namespace Omega
             this.panel2.Size = new System.Drawing.Size(309, 97);
             this.panel2.TabIndex = 0;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(29, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Help";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 71);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(89, 23);
+            this.button6.TabIndex = 2;
+            this.button6.Text = "Click ";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // labelUser
             // 
             this.labelUser.AutoSize = true;
@@ -204,35 +225,16 @@ namespace Omega
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(6, 71);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(89, 23);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Click ";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(29, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 15);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Help";
-            // 
-            // Form2
+            // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1127, 498);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form2";
+            this.Name = "Menu";
             this.Text = "MessengerApp";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace Omega
 {
-    partial class Form4
+    partial class UserProfile
     {
         /// <summary>
         /// Required designer variable.

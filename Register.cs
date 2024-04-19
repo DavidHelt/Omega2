@@ -6,9 +6,9 @@ using Omega;
 
 namespace Omega
 {
-    public partial class Form3 : Form
+    public partial class Register : Form
     {
-        public Form3()
+        public Register()
         {
             InitializeComponent();
         }
@@ -48,7 +48,7 @@ namespace Omega
                     cmd.Parameters.AddWithValue("@password", password);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Account has been created.");
-                    Form1 form1 = new Form1();
+                    LoginForm form1 = new LoginForm();
                     form1.Show();
                     this.Hide();
                 }
@@ -62,7 +62,7 @@ namespace Omega
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
+            LoginForm form1 = new LoginForm();
             form1.Show();
             this.Hide();
 

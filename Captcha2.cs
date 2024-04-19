@@ -38,7 +38,7 @@ namespace Omega
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This is the real one ( •_•)>⌐■-■ ", "Trash");
-            Form2 form2 = new Form2(user);
+            Menu form2 = new Menu(user);
             this.Hide();
             form2.Show();
         }

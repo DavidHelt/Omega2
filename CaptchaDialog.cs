@@ -11,6 +11,7 @@ namespace Omega
         private readonly User user;
         private readonly PictureBox[] pictureBoxes;
         private readonly Random random;
+        private PictureBox correctPictureBox; // Field to store the correct PictureBox
 
         public CaptchaDialog(User user)
         {
@@ -19,12 +20,38 @@ namespace Omega
             this.pictureBoxes = new PictureBox[]  // creates an array of pictureBoxes, that I will use for making their location random
             {
                 pictureBox1, pictureBox2, pictureBox3, pictureBox4,
-                pictureBox5, pictureBox6, pictureBox7, pictureBox8
+                pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9
             };
             this.random = new Random();
 
             ShufflePictureLocations();
+            ChooseCorrectPictureBox(); // Decide which PictureBox is correct
         }
+
+        private void ChooseCorrectPictureBox()
+        {
+            // Randomly choose between pictureBox2 and pictureBox9
+            correctPictureBox = random.Next(2) == 0 ? pictureBox2 : pictureBox9;
+
+            // Update label1 text based on the chosen PictureBox
+            if (correctPictureBox == pictureBox2)
+            {
+                label1.Text = "CLICK ON THE CAT FOR VERIFICATION (*/ω＼*)";
+            }
+            else if (correctPictureBox == pictureBox9)
+            {
+                label1.Text = "CLICK ON THE PUPPY FOR VERIFICATION (*/ω＼*)";
+            } // Update label1 text based on the chosen PictureBox
+            if (correctPictureBox == pictureBox2)
+            {
+                label1.Text = "CLICK ON THE CAT FOR VERIFICATION (*/ω＼*)";
+            }
+            else if (correctPictureBox == pictureBox9)
+            {
+                label1.Text = "CLICK ON THE PUPPY FOR VERIFICATION (*/ω＼*)";
+            }
+        }
+
         /// <summary>
         /// method that shuffles picture locations
         /// </summary>
@@ -79,7 +106,7 @@ namespace Omega
         /// <param name="e"></param>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nope, not a cat (┬┬﹏┬┬)", "Clickable image");
+            MessageBox.Show("Nope, not this time (┬┬﹏┬┬)", "Clickable image");
         }
 
         /// <summary>
@@ -89,43 +116,69 @@ namespace Omega
         /// <param name="e"></param>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cat ^_^", "Clickable image");
-            this.Hide();
-            Captcha2 c2 = new Captcha2(user);
-            c2.Show();
+            if (correctPictureBox == pictureBox2)
+            {
+                MessageBox.Show("Cat ^_^", "Clickable image");
+                this.Hide();
+                Captcha2 c2 = new Captcha2(user);
+                c2.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nope, not this time (┬┬﹏┬┬)", "Clickable image");
+            }
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nope, not a cat (┬┬﹏┬┬)", "Clickable image");
+            MessageBox.Show("Nope, not this time (┬┬﹏┬┬)", "Clickable image");
 
         }
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nope, not a cat (┬┬﹏┬┬)", "Clickable image");
+            MessageBox.Show("Nope, not this time (┬┬﹏┬┬)", "Clickable image");
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nope, not a cat (┬┬﹏┬┬)", "Clickable image");
+            MessageBox.Show("Nope, not this time (┬┬﹏┬┬)", "Clickable image");
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nope, not a cat (┬┬﹏┬┬)", "Clickable image");
+            MessageBox.Show("Nope, not this time (┬┬﹏┬┬)", "Clickable image");
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nope, not a cat (┬┬﹏┬┬)", "Clickable image");
+            MessageBox.Show("Nope, not this time (┬┬﹏┬┬)", "Clickable image");
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nope, not a cat (┬┬﹏┬┬)", "Clickable image");
+            MessageBox.Show("Nope, not this time (┬┬﹏┬┬)", "Clickable image");
         }
 
-      
+        /// <summary>
+        /// This is another click method on button which will send you to Captcha 2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBox9_Click_1(object sender, EventArgs e)
+        {
+            if (correctPictureBox == pictureBox9)
+            {
+                MessageBox.Show("Correct choice!", "Success");
+                // Proceed to the next step or close the captcha dialog
+                this.Hide();
+                Captcha2 c2 = new Captcha2(user);
+                c2.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nope, not this time (┬┬﹏┬┬)", "Clickable image");
+            }
+        }
     }
 
 }

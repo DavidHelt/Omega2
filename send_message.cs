@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Transactions;
-using static Omega.Form1;
+using static Omega.LoginForm;
 
 namespace Omega
 {

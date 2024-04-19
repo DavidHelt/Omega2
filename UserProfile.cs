@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace Omega
 {
-    public partial class Form4 : Form
+    public partial class UserProfile : Form
     {
         private readonly User user;
         private SqlConnection newConnection;
 
-        public Form4(User user)
+        public UserProfile(User user)
         {
             InitializeComponent();
             this.user = user;
@@ -71,7 +71,7 @@ namespace Omega
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form2 form2 = new Form2(user);
+            Menu form2 = new Menu(user);
             form2.Show();
         }
 
@@ -130,7 +130,7 @@ namespace Omega
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide(); // Hide the current form
-            var newForm = new Form4(user); // Create a new instance of Form4 with the current user
+            var newForm = new UserProfile(user); // Create a new instance of Form4 with the current user
             newForm.Show(); // Show the new form
             this.Close(); // Close the current form
         }

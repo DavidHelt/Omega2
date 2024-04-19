@@ -8,13 +8,13 @@ using Omega;
 
 namespace Omega
 {
-    public partial class Form2 : Form
+    public partial class Menu : Form
     {
         private readonly User user;
         private readonly Random random;
         private readonly HashSet<string> usedColors;
         private bool Error;
-        public Form2(User user)
+        public Menu(User user)
         {
             InitializeComponent();
             this.user = user;
@@ -129,7 +129,7 @@ namespace Omega
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
+            LoginForm form1 = new LoginForm();
             form1.Show();
             this.Hide();
         }
@@ -137,14 +137,14 @@ namespace Omega
         private void button5_Click(object sender, EventArgs e)
         {
             
-            Form4 form4 = new Form4(user);
+            UserProfile form4 = new UserProfile(user);
             this.Hide();
             form4.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Form5 form5 = new Form5();
+            Help form5 = new Help(user);
             this.Hide();
             form5.Show();
         }
