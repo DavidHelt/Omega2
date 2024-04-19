@@ -142,7 +142,11 @@ namespace Omega
             form4.Show();
         }
 
-
-
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Form5 form5 = new Form5();
+            this.Hide();
+            form5.Show();
+        }
     }
 }

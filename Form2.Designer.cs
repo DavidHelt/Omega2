@@ -44,6 +44,8 @@ namespace Omega
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -70,10 +72,10 @@ namespace Omega
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(237, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(49, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Profile";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -136,6 +138,8 @@ namespace Omega
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.labelUser);
             this.panel2.Controls.Add(this.button5);
@@ -159,10 +163,10 @@ namespace Omega
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Forte", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(115, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 32);
+            this.label1.Size = new System.Drawing.Size(85, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Menu";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -199,6 +203,26 @@ namespace Omega
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 71);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(89, 23);
+            this.button6.TabIndex = 2;
+            this.button6.Text = "Click ";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(29, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Help";
             // 
             // Form2
             // 
@@ -239,5 +263,7 @@ namespace Omega
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button6;
     }
 }
