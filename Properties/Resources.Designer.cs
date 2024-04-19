@@ -93,9 +93,29 @@ namespace Omega.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fakePython {
+            get {
+                object obj = ResourceManager.GetObject("fakePython", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pswd {
             get {
                 object obj = ResourceManager.GetObject("pswd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pythooon {
+            get {
+                object obj = ResourceManager.GetObject("pythooon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

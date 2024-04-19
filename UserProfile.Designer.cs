@@ -62,7 +62,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(50, 361);
+            this.button1.Location = new System.Drawing.Point(52, 375);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 47);
             this.button1.TabIndex = 1;
@@ -86,12 +86,12 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(32, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(619, 436);
+            this.panel1.Size = new System.Drawing.Size(619, 459);
             this.panel1.TabIndex = 2;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(261, 361);
+            this.button3.Location = new System.Drawing.Point(260, 375);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(113, 47);
             this.button3.TabIndex = 12;
@@ -110,7 +110,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(418, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 436);
+            this.panel2.Size = new System.Drawing.Size(200, 459);
             this.panel2.TabIndex = 11;
             // 
             // label8
@@ -151,7 +151,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(50, 361);
+            this.button2.Location = new System.Drawing.Point(50, 375);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 47);
             this.button2.TabIndex = 9;
@@ -235,13 +235,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Hobby";
             // 
-            // Form4
+            // UserProfile
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 495);
             this.Controls.Add(this.panel1);
-            this.Name = "Form4";
+            this.Name = "UserProfile";
             this.Text = "Profile";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

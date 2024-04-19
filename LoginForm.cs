@@ -31,18 +31,24 @@ namespace Omega
             //read from textbox 
             string username = textBox1.Text;
             string password = textBox2.Text;
-     
+
+            // Ensure the connection is open
+            if (con.State != ConnectionState.Open)
+            {
+                con.Open();
+            }
+
             using (SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE username=@username AND passw=@password", con))
             {
                 //login
                 command.Parameters.AddWithValue("@username", username);
                 command.Parameters.AddWithValue("@password", password);
-                
+
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        User user = new User(reader[0].ToString(),textBox1.Text);           
+                        User user = new User(reader[0].ToString(), textBox1.Text);
                         this.Hide();
 
                         CaptchaDialog captcha = new CaptchaDialog(user);
@@ -54,8 +60,12 @@ namespace Omega
                     }
                 }
             }
+
+            // It's a good practice to close the connection once you're done with it,
+            // but since you're using a single instance from Database.GetInstance(),
+            // you might want to manage the connection state more globally or leave it open.
         }
-       
+
         /// <summary>
         /// sign in button which will hop on form 3 which is simple register form :)
         /// </summary>
@@ -68,6 +78,11 @@ namespace Omega
             this.Hide();
         }
 
-      
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ForgottenPswd form6 = new ForgottenPswd();
+            form6.Show();
+            this.Hide();
+        }
     }
 }

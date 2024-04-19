@@ -204,6 +204,12 @@
     </Compile>
     <Compile Include="Colors.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="ForgottenPswd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgottenPswd.Designer.cs">
+      <DependentUpon>ForgottenPswd.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CaptchaDialog.resx">
       <DependentUpon>CaptchaDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgottenPswd.resx">
+      <DependentUpon>ForgottenPswd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -347,6 +356,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\cutePuppyy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\pythooon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\fakePython.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

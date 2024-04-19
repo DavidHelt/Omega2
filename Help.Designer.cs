@@ -35,16 +35,20 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(180, 70);
+            this.label1.AllowDrop = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(181, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(287, 151);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "If you are having issues with anything in project, here are few tips, that should" +
+    " help\r\n";
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(29, 341);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 49);
@@ -56,6 +60,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(504, 341);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 49);

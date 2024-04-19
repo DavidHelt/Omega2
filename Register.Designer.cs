@@ -132,7 +132,6 @@ namespace Omega
             this.textBox3.Size = new System.Drawing.Size(290, 27);
             this.textBox3.TabIndex = 10;
             this.textBox3.UseSystemPasswordChar = true;
-            
             // 
             // button2
             // 
@@ -145,8 +144,9 @@ namespace Omega
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form3
+            // Register
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 427);
@@ -159,7 +159,7 @@ namespace Omega
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form3";
+            this.Name = "Register";
             this.Text = "Register";
             this.ResumeLayout(false);
             this.PerformLayout();
