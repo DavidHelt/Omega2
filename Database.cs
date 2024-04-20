@@ -12,20 +12,29 @@ namespace Omega
     
     public class Database
     {
+        /// <summary>
+        /// Holds the singleton instance of SqlConnection.
+        /// </summary>
         private static SqlConnection conn = null;
+
+        /// <summary>
+        /// Private constructor to prevent instantiation.
+        /// </summary>
         private Database()
         {
 
         }
 
         /// <summary>
-        /// This method creates sql connection to database
+        /// Gets the singleton instance of the SqlConnection. If the connection is not already established,
+        /// it creates a new connection using the settings from the application's configuration file.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A singleton instance of SqlConnection.</returns>
         public static SqlConnection GetInstance()
         {
             if (conn == null)
             {
+                // Create a new SqlConnectionStringBuilder to build the connection string dynamically.
                 SqlConnectionStringBuilder consStringBuilder = new SqlConnectionStringBuilder();
                 consStringBuilder.DataSource = ReadSetting("DataSource");
                 consStringBuilder.InitialCatalog = ReadSetting("InitialCatalog");
@@ -44,10 +53,8 @@ namespace Omega
             return conn;
         }
 
-
-
         /// <summary>
-        /// this method closes connection
+        /// Closes and disposes the current database connection if it exists.
         /// </summary>
         public static void CloseConnection()
         {
@@ -67,10 +74,10 @@ namespace Omega
         }
 
         /// <summary>
-        /// this method is just reading config file
+        /// Reads a setting value from the application's configuration file.
         /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        /// <param name="key">The key of the setting to read.</param>
+        /// <returns>The value of the specified setting, or "Not Found" if the setting does not exist.</returns>
         private static string ReadSetting(string key)
         {
             var appSettings = ConfigurationManager.AppSettings;

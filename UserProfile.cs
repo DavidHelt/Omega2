@@ -24,6 +24,13 @@ namespace Omega
             LoadUserInfo();
         }
 
+        /// <summary>
+        /// Loads the user's information from the database and displays it on the form.
+        /// This method attempts to open a database connection if it's not already open,
+        /// then queries the User_Info table for the current user's hobby, gender, and student status.
+        /// The results are displayed on the form's controls.
+        /// </summary>
+       
         private void LoadUserInfo()
         {
             try
@@ -84,6 +91,12 @@ namespace Omega
             MessageBox.Show("Your profile has been updated", "Profile Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// Saves the user's information to the database.
+        /// This method checks if the user's information already exists in the database.
+        /// If it does, the information is updated; if not, a new record is inserted.
+        /// The method handles opening the database connection if it's not already open.
+        /// </summary>
         private void SaveUserInfo()
         {
             try

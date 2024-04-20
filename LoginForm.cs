@@ -22,10 +22,16 @@ namespace Omega
         }
 
         /// <summary>
-        /// login button that uses simple sql commands to add username and password to database
+        /// Handles the login process by verifying the user's credentials against the database.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An EventArgs that contains no event data.</param>
+        /// <remarks>
+        /// This method attempts to open a connection to the database and execute a SELECT query
+        /// to find a user with the provided username and password. If a match is found, it proceeds
+        /// to the CaptchaDialog; otherwise, it displays an error message.
+        /// Note: This method assumes the connection is managed globally and does not explicitly close it.
+        /// </remarks>
         private void button2_Click(object sender, EventArgs e)
         {
             //read from textbox 
@@ -60,17 +66,16 @@ namespace Omega
                     }
                 }
             }
-
-            // It's a good practice to close the connection once you're done with it,
-            // but since you're using a single instance from Database.GetInstance(),
-            // you might want to manage the connection state more globally or leave it open.
         }
 
         /// <summary>
-        /// sign in button which will hop on form 3 which is simple register form :)
+        /// Opens the registration form when the sign in button is clicked.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An EventArgs that contains no event data.</param>
+        /// <remarks>
+        /// This method hides the current LoginForm and displays the Register form to the user.
+        /// </remarks>
         private void button1_Click_1(object sender, EventArgs e)
         {
             Register form3 = new Register();
@@ -78,6 +83,15 @@ namespace Omega
             this.Hide();
         }
 
+        /// <summary>
+        /// Opens the forgotten password form when the corresponding button is clicked.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An EventArgs that contains no event data.</param>
+        /// <remarks>
+        /// This method hides the current LoginForm and displays the ForgottenPswd form to the user,
+        /// allowing them to recover or reset their password.
+        /// </remarks>
         private void button3_Click(object sender, EventArgs e)
         {
             ForgottenPswd form6 = new ForgottenPswd();

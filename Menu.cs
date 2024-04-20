@@ -113,11 +113,11 @@ namespace Omega
             addUserControl(reciMess);
         }
 
-     /// <summary>
-     /// loads form 2...
-     /// </summary>
-     /// <param name="sender"></param>
-     /// <param name="e"></param>
+        /// <summary>
+        /// loads form 2...
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         private void Form2_Load(object sender, EventArgs e)
         {
 
@@ -133,7 +133,11 @@ namespace Omega
             form1.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// loads user form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
             
@@ -141,6 +145,12 @@ namespace Omega
             this.Hide();
             form4.Show();
         }
+
+        /// <summary>
+        /// loads help form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void button6_Click(object sender, EventArgs e)
         {
