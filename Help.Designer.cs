@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -97,9 +99,28 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(92, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(351, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "label3";
+            this.label3.Text = "You can leave hobby blank, but you wont be able to reset your password";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(95, 220);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(333, 26);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "There is an option to send messages to yourself, someone or multiple \r\npeople at " +
+    "once\r\n";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(98, 268);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(330, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "If you seek any other help, go to Readme or my documentation PDF ";
             // 
             // Help
             // 
@@ -107,6 +128,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(635, 402);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
@@ -128,5 +151,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

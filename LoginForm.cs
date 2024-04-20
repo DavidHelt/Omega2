@@ -83,15 +83,7 @@ namespace Omega
             this.Hide();
         }
 
-        /// <summary>
-        /// Opens the forgotten password form when the corresponding button is clicked.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">An EventArgs that contains no event data.</param>
-        /// <remarks>
-        /// This method hides the current LoginForm and displays the ForgottenPswd form to the user,
-        /// allowing them to recover or reset their password.
-        /// </remarks>
+      
         private void button3_Click(object sender, EventArgs e)
         {
             ForgottenPswd form6 = new ForgottenPswd();

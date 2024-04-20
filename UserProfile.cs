@@ -147,5 +147,27 @@ namespace Omega
             newForm.Show(); // Show the new form
             this.Close(); // Close the current form
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // Reset the text box for hobby to empty
+            textBox1.Text = "";
+
+            // Reset radio buttons for gender. Assuming radioButton3 is the 'Other' option or your default option
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = true; 
+
+
+            // Reset the checkbox for student status to unchecked
+            checkBox1.Checked = false;
+
+            // Optionally, reset labels if they display dynamic data
+            label6.Text = "Hobby:";
+            label7.Text = "Gender:";
+            label8.Text = "Student:";
+
+            // Any other controls that hold user-specific data should be reset to their default state here
+        }
     }
 }
