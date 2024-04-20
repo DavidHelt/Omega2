@@ -32,5 +32,12 @@ namespace Omega
             Menu form2 = new Menu(user);
             form2.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserProfile up = new UserProfile(user);
+            up.Show();
+        }
     }
 }
