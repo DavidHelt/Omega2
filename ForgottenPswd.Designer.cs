@@ -189,6 +189,7 @@
             this.ClientSize = new System.Drawing.Size(685, 557);
             this.Controls.Add(this.panel1);
             this.Name = "ForgottenPswd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ForgottenPswd";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

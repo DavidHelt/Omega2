@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,11 +35,12 @@ namespace Omega
         /// </remarks>
         private void button2_Click(object sender, EventArgs e)
         {
-            //read from textbox 
             string username = textBox1.Text;
             string password = textBox2.Text;
 
-            // Ensure the connection is open
+            // Hash the input password
+            string hashedPassword = ComputeSha256Hash(password);
+
             if (con.State != ConnectionState.Open)
             {
                 con.Open();
@@ -46,9 +48,8 @@ namespace Omega
 
             using (SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE username=@username AND passw=@password", con))
             {
-                //login
                 command.Parameters.AddWithValue("@username", username);
-                command.Parameters.AddWithValue("@password", password);
+                command.Parameters.AddWithValue("@password", hashedPassword);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -65,6 +66,26 @@ namespace Omega
                         MessageBox.Show("Invalid username or password.");
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Computes the SHA-256 hash of a given string and returns the hash as a hexadecimal string.
+        /// This method is used for creating a secure hash of passwords before they are stored in the database.
+        /// </summary>
+        /// <param name="rawData">The input string to hash.</param>
+        /// <returns>The hexadecimal string representation of the SHA-256 hash.</returns>
+        private static string ComputeSha256Hash(string rawData)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
 

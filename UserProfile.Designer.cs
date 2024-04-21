@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(619, 459);
             this.panel1.TabIndex = 2;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Red;
+            this.button4.Location = new System.Drawing.Point(243, 285);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(90, 24);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "Reset info";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -237,17 +248,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Hobby";
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Red;
-            this.button4.Location = new System.Drawing.Point(243, 285);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 24);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Reset info";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // UserProfile
             // 
             this.AllowDrop = true;
@@ -256,6 +256,7 @@
             this.ClientSize = new System.Drawing.Size(695, 495);
             this.Controls.Add(this.panel1);
             this.Name = "UserProfile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profile";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

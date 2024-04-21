@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -68,16 +68,6 @@
             this.panel1.Size = new System.Drawing.Size(700, 360);
             this.panel1.TabIndex = 3;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(141, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(363, 20);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "CLICK ON THE CAT FOR VERIFICATION (*/ω＼*)";
-            // 
             // pictureBox9
             // 
             this.pictureBox9.Image = global::Omega.Properties.Resources.cutePuppyy;
@@ -88,6 +78,16 @@
             this.pictureBox9.TabIndex = 12;
             this.pictureBox9.TabStop = false;
             this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(141, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(363, 20);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "CLICK ON THE CAT FOR VERIFICATION (*/ω＼*)";
             // 
             // pictureBox8
             // 
@@ -184,6 +184,7 @@
             this.ClientSize = new System.Drawing.Size(695, 415);
             this.Controls.Add(this.panel1);
             this.Name = "CaptchaDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CaptchaDialog";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

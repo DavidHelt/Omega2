@@ -36,10 +36,20 @@ namespace Omega
             string subject = textBox2.Text;
             string message = richTextBox1.Text;
 
+            // Split the message by new lines to count the lines
+            string[] messageLines = message.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
             // Check if the message is longer than 200 characters
             if (message.Length > 200)
             {
                 MessageBox.Show("Please insert a message that is shorter than 200 chars");
+                return; // Stop further execution
+            }
+
+            // Check if the message has more than 10 lines
+            if (messageLines.Length > 10)
+            {
+                MessageBox.Show("Please insert a message that has no more than 10 lines");
                 return; // Stop further execution
             }
 

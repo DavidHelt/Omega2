@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -111,7 +112,7 @@ namespace Omega
         /// <param name="e">The event data.</param>
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!canChangePassword) // Step 3: Check the variable before allowing password change
+            if (!canChangePassword) // Ensure identity is verified
             {
                 MessageBox.Show("You must verify your identity before changing your password.");
                 return;
@@ -119,17 +120,22 @@ namespace Omega
 
             string regexPassword = @"^(?=.*\d)(?=.*[A-Z]).{7,}$";
             Regex rg = new Regex(regexPassword);
+            string newPassword = textBox3.Text;
+            string confirmPassword = textBox4.Text;
 
-            if (textBox3.Text != textBox4.Text)
+            if (newPassword != confirmPassword)
             {
                 MessageBox.Show("The passwords do not match. Please try again.");
                 return;
             }
-            else if (!rg.IsMatch(textBox3.Text))
+            else if (!rg.IsMatch(newPassword))
             {
                 MessageBox.Show("Please make a stronger password -> At least 1 number, 1 uppercase letter, and 7 characters");
                 return;
             }
+
+            // Hash the new password
+            string hashedNewPassword = ComputeSha256Hash(newPassword);
 
             SqlConnection con = newConnection;
             try
@@ -142,7 +148,7 @@ namespace Omega
                 using (SqlCommand cmd = new SqlCommand("UPDATE Users SET passw=@NewPassword WHERE username=@Username", con))
                 {
                     cmd.Parameters.AddWithValue("@Username", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@NewPassword", textBox3.Text);
+                    cmd.Parameters.AddWithValue("@NewPassword", hashedNewPassword); // Use hashed password
 
                     int result = cmd.ExecuteNonQuery();
                     if (result > 0)
@@ -165,6 +171,26 @@ namespace Omega
             finally
             {
                 con.Close();
+            }
+        }
+
+        /// <summary>
+        /// Computes the SHA-256 hash of a given string and returns the hash as a hexadecimal string.
+        /// This method is used for creating a secure hash of passwords before they are stored in the database.
+        /// </summary>
+        /// <param name="rawData">The input string to hash.</param>
+        /// <returns>The hexadecimal string representation of the SHA-256 hash.</returns>
+        private static string ComputeSha256Hash(string rawData)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
 
