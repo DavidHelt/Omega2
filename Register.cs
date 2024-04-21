@@ -44,7 +44,7 @@ namespace Omega
             else
             {
                 // Hash the password
-                string hashedPassword = ComputeSha256Hash(password);
+                string hashedPassword = ConvertToSha256Hash(password);
 
                 SqlConnection con = Database.GetInstance();
                 SqlCommand checkUser = new SqlCommand("SELECT COUNT(*) FROM Users WHERE username=@username", con);
@@ -77,7 +77,7 @@ namespace Omega
         /// </summary>
         /// <param name="rawData">The input string to hash.</param>
         /// <returns>The hexadecimal string representation of the SHA-256 hash.</returns>
-        private static string ComputeSha256Hash(string rawData)
+        private static string ConvertToSha256Hash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {

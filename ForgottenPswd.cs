@@ -16,7 +16,7 @@ namespace Omega
     public partial class ForgottenPswd : Form
     {
         private SqlConnection newConnection;
-        private bool canChangePassword = false; // Step 1: Define a boolean variable
+        private bool canChangePassword = false; 
 
         public ForgottenPswd()
         {
@@ -70,7 +70,7 @@ namespace Omega
                             if (match > 0)
                             {
                                 MessageBox.Show("Identity verified. You can change your password.");
-                                canChangePassword = true; // Step 2: Set the variable to true if hobby check passes
+                                canChangePassword = true; 
                             }
                             else
                             {
@@ -135,7 +135,7 @@ namespace Omega
             }
 
             // Hash the new password
-            string hashedNewPassword = ComputeSha256Hash(newPassword);
+            string hashedNewPassword = ConvertToSha256Hash(newPassword);
 
             SqlConnection con = newConnection;
             try
@@ -180,7 +180,7 @@ namespace Omega
         /// </summary>
         /// <param name="rawData">The input string to hash.</param>
         /// <returns>The hexadecimal string representation of the SHA-256 hash.</returns>
-        private static string ComputeSha256Hash(string rawData)
+        private static string ConvertToSha256Hash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
