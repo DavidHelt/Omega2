@@ -47,8 +47,8 @@ namespace Omega
             List<string> availableColors = Colors.ColorList.Except(usedColors).ToList();
             if (availableColors.Count == 0)
             {
-               
-                return null;
+                usedColors.Clear(); // Reset used colors to allow repetition
+                availableColors = Colors.ColorList; // Reassign all colors as available
             }
 
             int randomIndex = random.Next(availableColors.Count);
@@ -56,9 +56,9 @@ namespace Omega
             usedColors.Add(colorHex);
             return colorHex;
         }
-       
+
         /// <summary>
-        /// method for assigning random color to button, if all colors are used, there will be an error on the screen
+        /// method for assigning random color to button
         /// </summary>
         /// <param name="button"></param>
         private void AssignButtonColor(Button button)

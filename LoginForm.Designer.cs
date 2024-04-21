@@ -102,7 +102,7 @@
             this.button3.AllowDrop = true;
             this.button3.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.Location = new System.Drawing.Point(91, 384);
+            this.button3.Location = new System.Drawing.Point(95, 384);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(175, 29);
             this.button3.TabIndex = 8;

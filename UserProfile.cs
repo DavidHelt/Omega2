@@ -142,10 +142,10 @@ namespace Omega
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide(); // Hide the current form
-            var newForm = new UserProfile(user); // Create a new instance of Form4 with the current user
-            newForm.Show(); // Show the new form
-            this.Close(); // Close the current form
+            this.Hide();
+            var newForm = new UserProfile(user); 
+            newForm.Show();
+            this.Close(); 
         }
 
         private void button4_Click(object sender, EventArgs e)

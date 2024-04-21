@@ -15,35 +15,51 @@ namespace Omega
     public partial class ForgottenPswd : Form
     {
         private SqlConnection newConnection;
+        private bool canChangePassword = false; // Step 1: Define a boolean variable
+
         public ForgottenPswd()
         {
             InitializeComponent();
             newConnection = Database.GetInstance();
         }
 
-
+        /// <summary>
+        /// Verifies the identity of a user by matching the provided username and hobby with the database records.
+        /// If the user's identity is verified, it allows the user to proceed with password change by setting a flag.
+        /// This method checks for empty input fields, opens a database connection, and executes SQL commands to verify the user's identity.
+        /// Appropriate messages are displayed to the user based on the outcome of the verification process.
+        /// </summary>
         private void VerifyIdentityAndAllowPasswordChange()
         {
             string username = textBox1.Text;
             string hobby = textBox2.Text;
-            // Assuming Database.GetInstance() returns a valid SqlConnection object
             SqlConnection con = newConnection;
             try
             {
+                if (string.IsNullOrWhiteSpace(username))
+                {
+                    MessageBox.Show("Please enter a username.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(hobby))
+                {
+                    MessageBox.Show("Please enter your hobby.");
+                    return;
+                }
 
                 if (con.State != System.Data.ConnectionState.Open)
                 {
                     con.Open();
                 }
-                    // Check if the username exists in the Users table
+
                 using (SqlCommand cmd = new SqlCommand("SELECT id_user FROM Users WHERE username=@username", con))
                 {
                     cmd.Parameters.AddWithValue("@username", username);
-                    var userId = cmd.ExecuteScalar(); // Get the user ID if exists
+                    var userId = cmd.ExecuteScalar();
 
                     if (userId != null)
                     {
-                        // Now check if the hobby matches for the same user in User_Info table
                         using (SqlCommand cmdHobby = new SqlCommand("SELECT COUNT(*) FROM User_Info WHERE id_user=@UserId AND CAST(hobby AS NVARCHAR(MAX))=@Hobby", con))
                         {
                             cmdHobby.Parameters.AddWithValue("@UserId", userId);
@@ -52,13 +68,12 @@ namespace Omega
 
                             if (match > 0)
                             {
-                                // If hobby matches, allow user to change password
                                 MessageBox.Show("Identity verified. You can change your password.");
-                                // Enable or show password change fields here
+                                canChangePassword = true; // Step 2: Set the variable to true if hobby check passes
                             }
                             else
                             {
-                                MessageBox.Show("Hobby does not match my records. Please try again.");
+                                MessageBox.Show("Hobby does not match our records. Please try again.");
                             }
                         }
                     }
@@ -83,12 +98,28 @@ namespace Omega
             VerifyIdentityAndAllowPasswordChange();
         }
 
+
+        /// <summary>
+        /// Handles the password update process for a user who has forgotten their password.
+        /// This method first checks if the user has successfully verified their identity.
+        /// If verified, it then validates the new password against a set of criteria (presence of digits, uppercase letters, and minimum length).
+        /// Upon successful validation, it updates the user's password in the database.
+        /// If the password update is successful, it redirects the user to the login form.
+        /// Otherwise, it displays an appropriate error message.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event data.</param>
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!canChangePassword) // Step 3: Check the variable before allowing password change
+            {
+                MessageBox.Show("You must verify your identity before changing your password.");
+                return;
+            }
+
             string regexPassword = @"^(?=.*\d)(?=.*[A-Z]).{7,}$";
             Regex rg = new Regex(regexPassword);
 
-            // Check if the new password and confirm password match
             if (textBox3.Text != textBox4.Text)
             {
                 MessageBox.Show("The passwords do not match. Please try again.");
@@ -100,7 +131,6 @@ namespace Omega
                 return;
             }
 
-            // Assuming Database.GetInstance() returns a valid SqlConnection object
             SqlConnection con = newConnection;
             try
             {
@@ -109,11 +139,10 @@ namespace Omega
                     con.Open();
                 }
 
-                // Update the user's password in the database
                 using (SqlCommand cmd = new SqlCommand("UPDATE Users SET passw=@NewPassword WHERE username=@Username", con))
                 {
                     cmd.Parameters.AddWithValue("@Username", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@NewPassword", textBox3.Text); 
+                    cmd.Parameters.AddWithValue("@NewPassword", textBox3.Text);
 
                     int result = cmd.ExecuteNonQuery();
                     if (result > 0)
@@ -122,7 +151,6 @@ namespace Omega
                         LoginForm form1 = new LoginForm();
                         form1.Show();
                         this.Hide();
-
                     }
                     else
                     {

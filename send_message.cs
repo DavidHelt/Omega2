@@ -31,16 +31,31 @@ namespace Omega
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime now = DateTime.Now;
-            string formattedDateTime = now.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            SqlConnection con = Database.GetInstance();
             // Get the subject, receiver, and message from the form
             string receiver = textBox1.Text;
-            string[] multiple_receivers = receiver.Split(',');
             string subject = textBox2.Text;
             string message = richTextBox1.Text;
 
-            bool isErrorOccurred = false; 
+            // Check if the message is longer than 200 characters
+            if (message.Length > 200)
+            {
+                MessageBox.Show("Please insert a message that is shorter than 200 chars");
+                return; // Stop further execution
+            }
+
+            // Check if the subject is longer than 50 characters
+            if (subject.Length > 50)
+            {
+                MessageBox.Show("Please insert a subject that is shorter than 50 chars");
+                return; // Stop further execution
+            }
+
+            DateTime now = DateTime.Now;
+            string formattedDateTime = now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            SqlConnection con = Database.GetInstance();
+            string[] multiple_receivers = receiver.Split(',');
+
+            bool isErrorOccurred = false;
 
             try
             {
