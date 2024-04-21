@@ -22,11 +22,11 @@ namespace Omega
         {
             string username = textBox1.Text;
             string password = textBox2.Text;
-            string confirmPassword = textBox3.Text; // New textbox for password confirmation
+            string confirmPassword = textBox3.Text; 
             string regexPassword = @"^(?=.*\d)(?=.*[A-Z]).{7,}$";
 
             Regex rg = new Regex(regexPassword);
-            if (username.Length < 5)
+            if (username.Length < 4)
             {
                 MessageBox.Show("Username is too short");
             }
@@ -40,21 +40,33 @@ namespace Omega
             }
             else
             {
-                // Connect to database and insert the new user
+                // Check if username already exists
                 SqlConnection con = Database.GetInstance();
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO Users(username,passw) values(@username,@password)", con))
+                SqlCommand checkUser = new SqlCommand("SELECT COUNT(*) FROM Users WHERE username=@username", con);
+                checkUser.Parameters.AddWithValue("@username", username);
+                int userExists = (int)checkUser.ExecuteScalar();
+
+                if (userExists > 0)
                 {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Account has been created.");
-                    LoginForm form1 = new LoginForm();
-                    form1.Show();
-                    this.Hide();
+                    MessageBox.Show("This username is already taken. Please choose a different username.");
+                }
+                else
+                {
+                    // Username is unique, proceed with registration
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Users(username,passw) values(@username,@password)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Account has been created.");
+                        LoginForm form1 = new LoginForm();
+                        form1.Show();
+                        this.Hide();
+                    }
                 }
             }
-
         }
+
         /// <summary>
         /// button that will send you back to the login (form1)
         /// </summary>
