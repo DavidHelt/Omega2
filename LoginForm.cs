@@ -38,8 +38,6 @@ namespace Omega
             string username = textBox1.Text;
             string password = textBox2.Text;
 
-            // Hash the input password
-            string hashedPassword = ComputeSha256Hash(password);
 
             if (con.State != ConnectionState.Open)
             {
@@ -49,7 +47,7 @@ namespace Omega
             using (SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE username=@username AND passw=@password", con))
             {
                 command.Parameters.AddWithValue("@username", username);
-                command.Parameters.AddWithValue("@password", hashedPassword);
+                command.Parameters.AddWithValue("@password", password);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -69,25 +67,7 @@ namespace Omega
             }
         }
 
-        /// <summary>
-        /// Computes the SHA-256 hash of a given string and returns the hash as a hexadecimal string.
-        /// This method is used for creating a secure hash of passwords before they are stored in the database.
-        /// </summary>
-        /// <param name="rawData">The input string to hash.</param>
-        /// <returns>The hexadecimal string representation of the SHA-256 hash.</returns>
-        private static string ComputeSha256Hash(string rawData)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
+       
 
         /// <summary>
         /// Opens the registration form when the sign in button is clicked.
