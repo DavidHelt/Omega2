@@ -69,3 +69,20 @@ REFERENCES [dbo].[Users] ([id_user])
 GO
 
 
+
+-- Create User_Info table
+CREATE TABLE dbo.User_Info(
+    id_user_info int IDENTITY(1,1) NOT NULL,
+    id_user int NOT NULL,
+    hobby text NULL,
+    gender nvarchar(6) NULL,
+    is_student bit NULL,
+    PRIMARY KEY CLUSTERED 
+    (
+        id_user_info ASC
+    ),
+    CONSTRAINT FK_User_Info_Users FOREIGN KEY (id_user) REFERENCES dbo.Users (id_user),
+    CONSTRAINT CHK_Gender CHECK (gender IN ('Male', 'Female', 'Other'))
+)
+GO
+
